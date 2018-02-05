@@ -10,6 +10,10 @@ sudo ln -s "$(which nodejs)" /usr/bin/node
 npm install
 ```
 
+### For Windows
+
+Make sure that nodejs and git directories added to `Path` Environment variable
+
 ### Running
 ```
 ./node_modules/.bin/ionic serve
