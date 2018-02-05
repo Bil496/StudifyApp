@@ -42,11 +42,11 @@ export class MyApp {
     ];
 
     this.pages = [
-      { title: 'Home', component: 'HomePage', active: true, icon: 'home' },
+      { title: 'Main', component: 'MainPage', active: true, icon: 'home' },
       { title: 'Groups', component: 'GroupPage', active: false, icon: 'home' },
       { title: 'Profile', component: 'ProfilePage', active: false, icon: 'home' },
       { title: 'Logout', component: 'LogoutPage', active: false, icon: 'home' },
-      { title: '', component: 'HomePage', active: true, icon: 'home' },
+      { title: '', component: 'HomePage', active: true, icon: 'home' }, // BURAYA KADAR GERCEK APPTE OLMASI GEREKENLER
       { title: 'Accordion List', component: 'AccordionListPage', active: false, icon: 'map' },
       { title: 'Ionic Official Components',
         component: 'IonicOfficialComponentsPage', active: false, icon: 'ionic' },
