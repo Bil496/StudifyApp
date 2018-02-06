@@ -43,8 +43,9 @@ export class MyApp {
 
     this.pages = [
       { title: 'Main', component: 'MainPage', active: true, icon: 'home' },
-      { title: 'Groups', component: 'GroupPage', active: false, icon: 'home' },
-      { title: 'Profile', component: 'ProfilePage', active: false, icon: 'home' },
+      { title: 'My Groups', component: 'MyGroupsPage', active: false, icon: 'home' },
+      { title: 'Find Group', component: 'FindGroupPage', active: false, icon: 'home' },
+      { title: 'My Profile', component: 'ProfilePage', active: false, icon: 'home' },
       { title: 'Logout', component: 'LogoutPage', active: false, icon: 'home' },
       { title: '', component: 'HomePage', active: true, icon: 'home' }, // BURAYA KADAR GERCEK APPTE OLMASI GEREKENLER
       { title: 'Accordion List', component: 'AccordionListPage', active: false, icon: 'map' },
@@ -86,7 +87,10 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    if(page.title  == "My Profile")
+      this.nav.push(page.component);
+    else
+      this.nav.setRoot(page.component);
     this.activePage.next(page);
   }
 
