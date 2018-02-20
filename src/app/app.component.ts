@@ -81,6 +81,11 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashscreen.hide();
       this.menuCtrl.enable(false, 'right');
+      Object.keys(this.menuCtrl).map(k => this.menuCtrl.enable(false, this.menuCtrl[k]));
+
+      // Enables then open the selected menu
+      this.menuCtrl.enable(false, 'menu-components');
+      this.menuCtrl.enable(true, 'menu-material');
     });
   }
 
