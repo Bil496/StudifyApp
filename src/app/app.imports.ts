@@ -16,6 +16,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { HTTP } from '@ionic-native/http';
 
 // Directives
 import { SlidingDrawer } from '../components/sliding-drawer/sliding-drawer';
@@ -44,6 +45,7 @@ export const PROVIDERS = [
   Camera,
   Diagnostic,
   Geolocation,
+  HTTP,
   CardIO,
   StatusBar,
   SplashScreen,

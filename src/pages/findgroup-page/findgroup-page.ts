@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
+import { HTTP } from '@ionic-native/http';
 
 @IonicPage()
 @Component({
@@ -29,12 +30,27 @@ export class FindGroupPage {
   ];
 
   items2;
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private http: HTTP) {
 
     this.items2 = this.items;
-
+    this.getTopics();
   }
 
+  getTopics() {
+    this.http.get('www.google.com.tr', {}, {})
+    .then(data => {
+      console.log(data.status);
+      console.log(data.data); // data received by server
+      console.log(data.headers);
+
+    })
+    .catch(error => {
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+    });
+  }
+  
   delete(item) {
     alert('Deleted ' + item.title);
   }
