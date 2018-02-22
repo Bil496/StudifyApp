@@ -81,13 +81,18 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashscreen.hide();
       this.menuCtrl.enable(false, 'right');
+      Object.keys(this.menuCtrl).map(k => this.menuCtrl.enable(false, this.menuCtrl[k]));
+
+      // Enables then open the selected menu
+      this.menuCtrl.enable(false, 'menu-components');
+      this.menuCtrl.enable(true, 'menu-material');
     });
   }
 
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    if(page.title  == "My Profile")
+    if(page.title  == "My Profile" || page.title  == "Find Group")
       this.nav.push(page.component);
     else
       this.nav.setRoot(page.component);

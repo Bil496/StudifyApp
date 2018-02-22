@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Main Page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Welcome To Studify App!</p>
+
+  <accordion-list *ngFor="let item of items; let index = index"
+                  [title]="item.name"
+                  [expanded]="index === 0">
+    <img [src]="item.imageUrl">
+    <p text-wrap>{{item.description}}</p>
+  </accordion-list>
+</ion-content>

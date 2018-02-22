@@ -25,11 +25,13 @@ import { Autosize } from '../components/autosize/autosize';
 import { SwingModule } from 'angular2-swing';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 export const MODULES = [
   SwingModule,
   BrowserModule,
   HttpClientModule,
+  HttpModule,
 ];
 
 export const PROVIDERS = [
@@ -47,7 +49,7 @@ export const PROVIDERS = [
   CardIO,
   StatusBar,
   SplashScreen,
-  GoogleMaps,
+  GoogleMaps
 ];
 
 export const DIRECTIVES = [
