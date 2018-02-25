@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpModule, ResponseType } from '@angular/http';
 import { map } from 'rxjs/operators';
+import { CreateTopicPage } from '../createtopic-page/createtopic-page'
 
 @IonicPage()
 @Component({
@@ -41,7 +42,7 @@ export class FindGroupPage {
     head.append('Accept','application/json');
     head.append('content-type','application/json');
     this.items2 = this.items;
-    http.get('http://localhost:8100/#/home', {headers: head, responseType: 'text'} ).pipe().subscribe(res => console.log(res.toString()));
+//    http.get('http://localhost:8100/#/home', {headers: head, responseType: 'text'} ).pipe().subscribe(res => console.log(res.toString()));
   }
 
   delete(item) {
@@ -64,6 +65,12 @@ export class FindGroupPage {
     this.items = this.items2.filter((item) => {
       return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
     });
+
+  }
+
+  createTopicClicked(){
+    
+    this.navCtrl.push(CreateTopicPage);
 
   }
 }

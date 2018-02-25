@@ -4,10 +4,11 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { MODULES, PROVIDERS } from './app.imports';
+import { CreateTopicPage } from '../pages/createtopic-page/createtopic-page';
 
 @NgModule({
   declarations: [
-    // App Core
+    CreateTopicPage,
     MyApp,
   ],
   imports: [
@@ -18,6 +19,7 @@ import { MODULES, PROVIDERS } from './app.imports';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    CreateTopicPage,
   ],
   providers: [PROVIDERS, { provide: ErrorHandler, useClass: IonicErrorHandler }]
 })
