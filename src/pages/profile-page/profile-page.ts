@@ -22,11 +22,74 @@ export class ProfilePage {
     whatsapp: '555 555 555',
   };
 
-  constructor(public navCtrl: NavController) { }
+    users= [
+      {
+        name: "Onur Yildiz",
+        userId: 1,
+      },
+      {
+        name: "Görkem Mülayim",
+        userId: 2,
+      },
+      {
+        name: "Ahmet Selim Kaya",
+        userId: 3,
+      },
+      {
+        name: "Fatih Erdem Kızılkaya",
+        userId: 4,
+      },
+      {
+        name: "Burak Uyar",
+        userId: 5,
+      },
+      {
+        name: "Emir Kiper",
+        userId: 6,
+      },
+      {
+        name: "Berhan",
+        userId: 7,
+      },
+      {
+        name: "Tolyboy",
+        userId: 8,
+      },
+      {
+        name: "B E R K E",
+        userId: 9,
+      },
+      {
+        name: "Çağdaş",
+        userId: 10,
+      },
+      {
+        name: "Evren",
+        userId: 11,
+      },
+      {
+        name: "Gerede",
+        userId: 12,
+      }
+    ];
+
+  constructor(public navCtrl: NavController) { 
+
+    var userId: any;
+    if (localStorage.getItem("stud-showProfile") === null) {
+      localStorage.setItem("stud-showProfile","0");
+    }
+    userId = +localStorage.getItem("stud-showProfile");
+    userId = userId - 1;
+    if(userId < 0 ) userId = 0;
+    this.user.name = this.users[userId].name;
+    
+    localStorage.setItem("stud-showProfile","-1");
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
-
   }
 
 }

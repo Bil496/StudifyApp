@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpModule, ResponseType } from '@angular/http';
 import { map } from 'rxjs/operators';
-import { CreateTopicPage } from '../createtopic-page/createtopic-page'
+import { CreateTopicPage } from '../createtopic-page/createtopic-page';
+import { EnterTalentsPage } from '../entertalents-page/entertalents-page';
 
 @IonicPage()
 @Component({
@@ -14,21 +15,24 @@ import { CreateTopicPage } from '../createtopic-page/createtopic-page'
 export class FindGroupPage {
   items = [
     {
+      id: 1,
       imageUrl: 'assets/img/lists/stadium.jpg',
       title: 'Group 1',
       place: '3 Subtopics',
       date: '05/06/2016'
     },
     {
+      id: 2,
       imageUrl: 'assets/img/lists/stadium-3.png',
       title: '2018 Guz Mat 101',
-      place: 'onuryildiz',
+      place: '4 Subtopics',
       date: '15/03/2016'
     },
     {
+      id: 3,
       imageUrl: 'assets/img/lists/stadium-2.jpg',
       title: 'Gitara Giris',
-      place: '2 Kisilik Gruplar',
+      place: '2 Subtopics',
       date: '05/12/2015'
     },
   ];
@@ -68,9 +72,14 @@ export class FindGroupPage {
 
   }
 
-  createTopicClicked(){
+  itemTapped(event, item) {
     
-    this.navCtrl.push(CreateTopicPage);
+    localStorage.setItem("stud-topicClicked",item.title.toString());
+    localStorage.setItem("stud-subtopicClicked",item.id.toString());
+    this.navCtrl.push(EnterTalentsPage);
+  }
 
+  createTopicClicked(){
+    this.navCtrl.push(CreateTopicPage);
   }
 }
