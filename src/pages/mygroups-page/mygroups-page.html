@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>My Group List</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items" >
+      <ion-item>
+        <h2>{{item.title}}</h2>
+        <p>{{item.place}} • {{item.date}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="viewTerket(item)">
+        <ion-icon name="return-left"></ion-icon>
+        Terket
+      </button>
+        <button ion-button color="primary" (click)="viewBilgi(item)">
+        <ion-icon name="information"></ion-icon>
+        Bilgi
+      </button>
+      <!-- 
+        <button ion-button color="danger" (click)="delete(item)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+      -->
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

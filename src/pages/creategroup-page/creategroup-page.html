@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Create Group</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+      <ion-item>
+        <ion-label>Group Name</ion-label>
+          <ion-input type="text" [(ngModel)]="groupName" ></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Place</ion-label>
+          <ion-input type="text" [(ngModel)]="place"></ion-input>
+        </ion-item>
+  </ion-list>
+  <ion-buttons>
+    <button ion-button full (click)="createClicked()">Create Group</button>
+  </ion-buttons>
+</ion-content>
+
+
+    <!--  <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      {{item.title}}
+    </button> -->

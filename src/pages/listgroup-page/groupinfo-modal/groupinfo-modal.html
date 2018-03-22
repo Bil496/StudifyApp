@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Üye Listesi</ion-title>
+    <ion-buttons end (click)="dismiss()">
+      <button ion-button icon-only>
+        <ion-icon name='close'></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items" >
+      <ion-item (click) = "userClicked(item)">
+        <h2>{{item.name}}</h2>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
