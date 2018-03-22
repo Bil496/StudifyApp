@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Requests</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items" >
+      <ion-item (click) = "userClicked(item)">
+        <h2>{{item.title}}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="viewKabul(item)">
+        <ion-icon name="return-left"></ion-icon>
+        Kabul Et
+      </button>
+        <button ion-button color="danger" (click)="viewReddet(item)">
+        <ion-icon name="close"></ion-icon>
+        Reddet
+      </button>
+      <!-- 
+        <button ion-button color="danger" (click)="delete(item)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+      -->
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
