@@ -35,7 +35,98 @@ export class MainPage {
       description: 'TOBB ETÜ Bilgisayar Mühendisliği 4. Sınıf 5 arkadaşız. Bitirme projesi dersi için bir araya geldik ve ortaya böyle bir ürün çıkardık. ',
       imageUrl: '',
     }
-  ]
-  constructor(public navCtrl: NavController) { }
+  ];
+
+  users = [
+    {
+      userId: 0,
+      name: "Onur Yildiz"
+    },
+    {
+      userId: 1,
+      name: "Burak Uyar"
+    },
+    {
+      userId: 2,
+      name: "Fatih Erdem Kizilkaya"
+    },
+    {
+      userId: 3,
+      name: "Ahmet Selim Kaya"
+    },
+    {
+      userId: 4,
+      name: "Gorkem Mulayim"
+    },
+    {
+      userId: 5,
+      name: "Cagdas Evren Gerede"
+    }
+  ];
+
+  groups = [
+    {
+      id: 0,
+      topicId: 0,
+      imageUrl: 'assets/img/lists/stadium.jpg',
+      title: '111deyiz',
+      place: 'bahce',
+      date: '11:24',
+      users: [ 0,1,2 ]
+    },
+    {
+      id: 1,
+      topicId: 0,
+      imageUrl: 'assets/img/lists/stadium-3.png',
+      title: 'Grup Fuaye',
+      place: 'kutuphane',
+      date: '15:36',
+      users: [1,2]
+    },
+    {
+      id: 2,
+      topicId: 0,
+      imageUrl: 'assets/img/lists/stadium-2.jpg',
+      title: 'Sabahlamali',
+      place: '112',
+      date: '18:09',
+      users: [0,3,4]
+    },
+    {
+      id: 3,
+      topicId: 1,
+      imageUrl: 'assets/img/lists/stadium-2.jpg',
+      title: 'Sabahlamali',
+      place: '112',
+      date: '08:14',
+      users: [0,1,2,3]
+    },
+    {
+      id: 4,
+      topicId: 1,
+      imageUrl: 'assets/img/lists/stadium-2.jpg',
+      title: 'Yurt Grubu',
+      place: 'yurt',
+      date: '18:09',
+      users: [2,3,4]
+    },
+    {
+      id: 5,
+      topicId: 2,
+      imageUrl: 'assets/img/lists/stadium-2.jpg',
+      title: 'Kutuphane',
+      place: '112',
+      date: '15:02',
+      users: [0,1,2,3,4]
+    },
+  ];
+
+
+  constructor(public navCtrl: NavController) { 
+    localStorage.setItem("stud-userId","0");
+    localStorage.setItem("stud-showProfile",localStorage.getItem("stud-userId"));
+    localStorage.setItem("stud-userList",JSON.stringify(this.users));
+    localStorage.setItem("stud-grouplist",JSON.stringify(this.groups));
+  }
 
 }

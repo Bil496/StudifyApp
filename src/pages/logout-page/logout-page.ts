@@ -10,7 +10,7 @@ import { MainPage } from '../main-page/main-page';
 export class LogoutPage {
 
   constructor(public navCtrl: NavController) { 
-
+    localStorage.clear();
     this.navCtrl.setRoot(MainPage);
   }
 
