@@ -2,19 +2,18 @@
   "extends": "tslint-config-airbnb",
   "rules": {
     "trailing-comma": [ false ],
-    "no-duplicate-variable": true,
-    "no-unused-variable": [ true ],
+    "no-duplicate-variable": false,
+    "no-unused-variable": [ false ],
     "prefer-array-literal": false,
     "ter-arrow-parens": false,
     "align": [ false ],
-    "no-empty": true,
+    "no-empty": false,
     "no-increment-decrement": false,
     "no-param-reassign": false,
-    "no-consecutive-blank-lines": true,
-    "max-line-length": [ true, 120 ],
-     "variable-name": [true, "allow-leading-underscore"]
+    "no-consecutive-blank-lines": false,
+    "max-line-length": [ false, 120 ],
+     "variable-name": [false, "allow-leading-underscore"]
   },
   "rulesDirectory": [
-    "node_modules/tslint-eslint-rules/dist/rules"
   ]
 }
