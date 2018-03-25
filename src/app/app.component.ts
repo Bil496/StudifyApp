@@ -1,6 +1,6 @@
 import { AppState } from './app.global';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController } from 'ionic-angular';
+import { Nav, Platform, MenuController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Subject } from 'rxjs/Subject';
@@ -11,7 +11,8 @@ import { Subject } from 'rxjs/Subject';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'MainPage';
+  usersname: any;
+  rootPage: any = 'LoginPage';
   activePage = new Subject();
 
   pages: Array<{ title: string, component: any, active: boolean, icon: string }>;
@@ -25,9 +26,13 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashscreen: SplashScreen,
     public global: AppState,
+    public events: Events,
     public menuCtrl: MenuController
   ) {
     this.initializeApp();
+    events.subscribe('loggedin', () => {
+      this.usersname = localStorage.getItem("stud-name");
+    });
     this.rightMenuItems = [
       { icon: 'home', active: true },
       { icon: 'alarm', active: false },

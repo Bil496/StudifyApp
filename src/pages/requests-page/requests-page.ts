@@ -13,32 +13,12 @@ import { ProfilePage } from '../profile-page/profile-page';
   templateUrl: 'requests-page.html'
 })
 export class RequestsPage {
-  items = [
-    {
-      userId: 1,
-      title: 'Onur Yıldız',
-    },
-    {
-      userId: 2,
-      title: 'Görkem Mülayim',
-    },
-    {
-      userId: 3,
-      title: 'Ahmet Selim Kaya',
-    },
-  ];
-
+  items;
   items2;
   constructor(public navCtrl: NavController, http: HttpClient, public alertCtrl: AlertController,
               public modalCtrl: ModalController) {
-
-    var head = new HttpHeaders();
-    head.append('Access-Control-Allow-Origin' , '*');
-    head.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-    head.append('Accept','application/json');
-    head.append('content-type','application/json');
-    this.items2 = this.items;
-//    http.get('http://localhost:8100/#/home', {headers: head, responseType: 'text'} ).pipe().subscribe(res => console.log(res.toString()));
+    
+      this.items = JSON.parse(localStorage.getItem("stud-requestList"));
   }
 
   viewReddet(item) {
@@ -49,6 +29,8 @@ export class RequestsPage {
     });
 
     al.present();
+
+    this.sil(item);
   }
 
   viewKabul(item) {
@@ -59,6 +41,7 @@ export class RequestsPage {
     });
 
     al.present();
+    this.sil(item);
   }
 
   userClicked(item){
@@ -68,4 +51,25 @@ export class RequestsPage {
     this.navCtrl.push(ProfilePage);
   }
 
+  sil(item){
+
+    for(var i = 0; i < this.items.length; i++ )
+    if(this.items[i].reqId == item.reqId){
+          this.items.splice(i,1); break;
+        }
+  
+    localStorage.setItem("stud-requestList",JSON.stringify(this.items));
+  }
+
 }
+
+/*
+
+    var head = new HttpHeaders();
+    head.append('Access-Control-Allow-Origin' , '*');
+    head.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    head.append('Accept','application/json');
+    head.append('content-type','application/json');
+    this.items2 = this.items;
+//    http.get('http://localhost:8100/#/home', {headers: head, responseType: 'text'} ).pipe().subscribe(res => console.log(res.toString()));
+  */

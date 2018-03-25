@@ -15,64 +15,14 @@ export class EnterTalentsPage {
   constructor(public navCtrl: NavController) {
     this.topicId = localStorage.getItem("stud-subtopicClicked");
     this.title = localStorage.getItem("stud-topicClicked");
-    this.allItems = [
-      {
-        id: "1",
-        subTopics: [
-          {
-            name: "Subtopic 1",
-            value: 0,
-          },
-          {
-            name: "Subtopic 2",
-            value: 0,
-          },
-          {
-            name: "Subtopic 3",
-            value: 0,
-          }
-        ],
-      },
-      {
-        id: "2",
-        subTopics: [
-          {
-            name: "Grafik Çizimi",
-            value: 0,
-          },
-          {
-            name: "Integral",
-            value: 0,
-          },
-          {
-            name: "Türev Alımı",
-            value: 0,
-          },
-          {
-            name: "Alan Hesaplama",
-            value: 0,
-          },
-        ],
-      },
-      {
-        id: "3",
-        subTopics: [
-          {
-            name: "Nota Bilgisi",
-            value: 0,
-          },
-          {
-            name: "Çalma Teknikleri",
-            value: 0,
-          },
-        ],
-      },
-    ];
 
-    if(this.topicId == "1") this.items = this.allItems[0].subTopics;
-    if(this.topicId == "2") this.items = this.allItems[1].subTopics;
-    if(this.topicId == "3") this.items = this.allItems[2].subTopics;
-    
+    this.allItems = JSON.parse(localStorage.getItem("stud-topiclist"));
+    for(var i = 0; i< this.allItems.length; i++)
+      if(this.allItems[i].id == this.topicId)
+      {
+        this.items = this.allItems[i].subTopics;
+        break;
+      }
   }
 
   findClicked(){

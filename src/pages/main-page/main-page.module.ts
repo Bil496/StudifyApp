@@ -16,4 +16,4 @@ import { IonicPageModule } from 'ionic-angular';
   ]
 })
 
-export class HomePageModule { }
+export class MainPageModule { }

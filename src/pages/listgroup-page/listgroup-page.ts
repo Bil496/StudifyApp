@@ -12,45 +12,43 @@ import { CreateGroupPage } from '../creategroup-page/creategroup-page';
   templateUrl: 'listgroup-page.html'
 })
 export class ListGroupPage {
-  items = [
-    {
-      id: 1,
-      imageUrl: 'assets/img/lists/stadium.jpg',
-      title: '111deyiz',
-      place: 'bahce',
-      date: '11:24'
-    },
-    {
-      id: 2,
-      imageUrl: 'assets/img/lists/stadium-3.png',
-      title: 'Grup Fuaye',
-      place: 'kutuphane',
-      date: '15:36'
-    },
-    {
-      id: 3,
-      imageUrl: 'assets/img/lists/stadium-2.jpg',
-      title: 'Sabahlamali',
-      place: '112',
-      date: '18:09'
-    },
-  ];
-
+  items;
   items2;
   constructor(public navCtrl: NavController, http: HttpClient, public alertCtrl: AlertController,
               public modalCtrl: ModalController) {
 
-    var head = new HttpHeaders();
-    head.append('Access-Control-Allow-Origin' , '*');
-    head.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-    head.append('Accept','application/json');
-    head.append('content-type','application/json');
-    this.items2 = this.items;
-//    http.get('http://localhost:8100/#/home', {headers: head, responseType: 'text'} ).pipe().subscribe(res => console.log(res.toString()));
+                var tId = localStorage.getItem("stud-subtopicClicked");
+                this.items2 = localStorage.getItem("stud-grouplist");
+                let st2: any = [];
+                for(var i = 0; i < this.items2.length; i++)
+                {
+                  if(this.items2[i].topicId == tId)
+                    st2.push(this.items2[i]);
+                }
+                this.items = st2;
+}
+
+  ionViewDidEnter(){
+    
+    var tId = localStorage.getItem("stud-subtopicClicked");
+    this.items2 = JSON.parse(localStorage.getItem("stud-grouplist"));
+    let st2: any = [];
+    for(var i = 0; i < this.items2.length; i++)
+    {
+      if(this.items2[i].topicId == tId)
+        st2.push(this.items2[i]);
+    }
+    this.items = st2;
   }
 
   delete(item) {
     alert('Deleted ' + item.title);
+    
+    for(var i = 0; i < this.items.length; i++ )
+      if(this.items[i].id == item.id)
+        this.items.splice(item[i],1);
+    
+    localStorage.setItem("stud-grouplist",JSON.stringify(this.items));
   }
 
   viewKatil(item) {
@@ -64,8 +62,7 @@ export class ListGroupPage {
   }
 
   viewBilgi(item) {
-    console.log(item);
-    localStorage.setItem("stud-showgroup", item.id);
+    localStorage.setItem("stud-showgroup", JSON.stringify(item));
     this.modalCtrl.create('GroupInfoModalPage', null, { cssClass: 'inset-modal' })
     .present();
   }
@@ -74,3 +71,14 @@ export class ListGroupPage {
     this.navCtrl.push(CreateGroupPage);
   }
 }
+
+
+/*
+    var head = new HttpHeaders();
+    head.append('Access-Control-Allow-Origin' , '*');
+    head.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    head.append('Accept','application/json');
+    head.append('content-type','application/json');
+    this.items2 = this.items;
+//    http.get('http://localhost:8100/#/home', {headers: head, responseType: 'text'} ).pipe().subscribe(res => console.log(res.toString()));
+  */

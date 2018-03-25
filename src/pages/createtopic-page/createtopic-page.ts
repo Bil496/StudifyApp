@@ -19,11 +19,21 @@ export class CreateTopicPage {
 
 
   createClicked(){
-    console.log("topicname " + this.topicName);
-    console.log("desc " + this.description);
-    console.log("subtopicNumber " + this.subtopicNumber);
-    console.log("subtopicString " + this.subtopicString);
+    var items = JSON.parse(localStorage.getItem("stud-topiclist"));
+    var st = this.subtopicString.split(',');
+    let st2: any = [];
+    for(var i = 0; i < st.length; i++)
+      st2.push({ name: st[i], value: '0' });
 
+    var newItem = {
+      id: items.length,
+      title: this.topicName,
+      place: this.subtopicNumber + " Subtopics",
+      date: "20.01.2017",
+      subTopics: st2
+    };
+    items.push(newItem);
+    localStorage.setItem("stud-topiclist",JSON.stringify(items));
     //HTTP CALL HERE
     this.navCtrl.pop();
   }
