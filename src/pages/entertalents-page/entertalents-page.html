@@ -7,15 +7,15 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-<br/>
-<ion-title>Enter Your Scores from 1 to 10</ion-title>
-<br/>
-    <ion-list>
-        <ion-item *ngFor="let item of items" >
-          <ion-label>{{ item.name }}</ion-label>
-          <ion-input>{{ item.value }}</ion-input>
-        </ion-item>
-      </ion-list>
+  <br/>
+  <ion-title>Enter Your Scores from 1 to 10</ion-title>
+  <br/>
+  <ion-list>
+    <ion-item *ngFor="let item of items" >
+      <ion-label>{{ item.name }}</ion-label>
+      <ion-input>{{ item.value }}</ion-input>
+    </ion-item>
+  </ion-list>
   <ion-buttons>
     <button ion-button full (click)="findClicked()">Find Group</button>
   </ion-buttons>

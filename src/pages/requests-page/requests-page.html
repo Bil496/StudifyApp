@@ -7,7 +7,8 @@
   <ion-list>
     <ion-item-sliding *ngFor="let item of items" >
       <ion-item (click) = "userClicked(item)">
-        <h2>{{item.title}}</h2>
+        <h2>{{item.username}}</h2>
+        <h3>{{item.groupname}}</h3>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="secondary" (click)="viewKabul(item)">

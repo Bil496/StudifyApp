@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -40,27 +40,33 @@ export class MainPage {
   users = [
     {
       userId: 0,
-      name: "Onur Yildiz"
+      name: "Onur Yildiz",
+      username: "oyildiz"
     },
     {
       userId: 1,
-      name: "Burak Uyar"
+      name: "Burak Uyar",
+      username: "buyar"
     },
     {
       userId: 2,
-      name: "Fatih Erdem Kizilkaya"
+      name: "Fatih Erdem Kizilkaya",
+      username: "fekizilkaya"
     },
     {
       userId: 3,
-      name: "Ahmet Selim Kaya"
+      name: "Ahmet Selim Kaya",
+      username: "askaya"
     },
     {
       userId: 4,
-      name: "Gorkem Mulayim"
+      name: "Gorkem Mulayim",
+      username: "gmulayim"
     },
     {
       userId: 5,
-      name: "Cagdas Evren Gerede"
+      name: "Cagdas Evren Gerede",
+      username: "cegerede"
     }
   ];
 
@@ -121,12 +127,45 @@ export class MainPage {
     },
   ];
 
+  requests = [
+    {
+      reqId: 0,
+      userId: 0,
+      username: 'Onur Yıldız',
+      groupname: "Group1"
+    },
+    {
+      reqId: 1,
+      userId: 4,
+      username: 'Görkem Mülayim',
+      groupname: "Mat101 Boys"
+    },
+    {
+      reqId: 2,
+      userId: 3,
+      username: 'Ahmet Selim Kaya',
+      groupname: "Team Kutuphane"
+    },
+  ];
 
-  constructor(public navCtrl: NavController) { 
-    localStorage.setItem("stud-userId","0");
-    localStorage.setItem("stud-showProfile",localStorage.getItem("stud-userId"));
+  constructor(public navCtrl: NavController, public events: Events) { 
+    
+    var usern: string = localStorage.getItem("stud-username");
+
+    console.log(usern);
+    for(var i = 0; i < this.users.length; i++)
+      if(this.users[i].username == usern){
+        localStorage.setItem("stud-userId",this.users[i].userId.toString());
+        localStorage.setItem("stud-name",this.users[i].name);
+        this.events.publish('loggedin');
+        break;
+      }
+      
+    console.log(localStorage.getItem("stud-userId"));
     localStorage.setItem("stud-userList",JSON.stringify(this.users));
+    localStorage.setItem("stud-showProfile",localStorage.getItem("stud-userId"));
     localStorage.setItem("stud-grouplist",JSON.stringify(this.groups));
+    localStorage.setItem("stud-requestList",JSON.stringify(this.requests));
   }
 
 }

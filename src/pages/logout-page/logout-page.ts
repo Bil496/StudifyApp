@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { MainPage } from '../main-page/main-page';
+import { LoginPage } from '../login-page/login-page';
 
 @IonicPage()
 @Component({
@@ -11,7 +12,7 @@ export class LogoutPage {
 
   constructor(public navCtrl: NavController) { 
     localStorage.clear();
-    this.navCtrl.setRoot(MainPage);
+    this.navCtrl.setRoot(LoginPage);
   }
 
 
